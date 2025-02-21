@@ -1,9 +1,51 @@
-﻿
+﻿@model AddArticoloModel
 @{
 	ViewData["Title"] = "Aggiungi Articolo";
 }
 
 <div class="container">
 	<h1 class="text-center text-danger mt-3">Aggiungi Articolo</h1>
+	<div>
+        <form method="post" asp-controller="Articoli" asp-action="Create">
+            <div class="my-3">
+                <label for="nomeArticolo" asp-for="Nome" class="form-label"></label>
+                <input id="nomeArticolo" asp-for="Nome" class="form-control" />
+                <span class="text-danger" asp-validation-for="Nome"></span>
+            </div>
 
+            <div class="my-3">
+                <label for="description" asp-for="Descrizione" class="form-label">Descrizione</label>
+                <textarea id="descrizione" asp-for="Descrizione" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="Descrizione"></span>
+            </div>
+
+            <div class="my-3">
+                <label for="prezzo" asp-for="Prezzo" class="form-label">Prezzo</label>
+                <input id="prezzo" asp-for="Prezzo" class="form-control" />
+                <span class="text-danger" asp-validation-for="Prezzo"></span>
+            </div>
+
+            <div class="my-3">
+                <label for="copertina" asp-for="Copertina" class="form-label">Copertina</label>
+                <input id="copertina" asp-for="Copertina" class="form-control" />
+                <span class="text-danger" asp-validation-for="Copertina"></span>
+            </div>
+
+            <div class="my-3">
+                <label for="immagine2" asp-for="Immagine2" class="form-label">Immagine2</label>
+                <input id="immagine2" asp-for="Immagine2" class="form-control" />
+                <span class="text-danger" asp-validation-for="Immagine2"></span>
+            </div>
+
+            <div class="my-3">
+                <label for="immagine3" asp-for="Immagine3" class="form-label">Immagine3</label>
+                <input id="immagine3" asp-for="Immagine3" class="form-control" />
+                <span class="text-danger" asp-validation-for="Immagine3"></span>
+            </div>
+            <div class="text-end my-3">
+                <button class="btn btn-warning me-2" type="reset">Reset</button>
+                <button class="btn btn-success" type="submit">Save</button>
+            </div>
+        </form>
+	</div>
 </div>

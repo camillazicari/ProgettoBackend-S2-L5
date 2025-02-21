@@ -68,6 +68,31 @@ namespace ProgettoBackend_S2_L5.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Create(AddArticoloModel addArticoloModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["Error"] = "Try again!";
+                return RedirectToAction("Add");
+            }
+
+            var nuovoArticolo = new Articolo()
+            {
+                Id = Guid.NewGuid(),
+                Nome = addArticoloModel.Nome,
+                Descrizione = addArticoloModel.Descrizione,
+                Prezzo = addArticoloModel.Prezzo,
+                Copertina = addArticoloModel.Copertina,
+                Immagine2 = addArticoloModel.Immagine2,
+                Immagine3 = addArticoloModel.Immagine3,
+            };
+
+            articoli.Add(nuovoArticolo);
+
+            return RedirectToAction("Index");
+        }
+
         [HttpGet("/articoli/info/{id:guid}")]
         public IActionResult Info(Guid id)
         {
