@@ -17,9 +17,13 @@
                     </div>
                     <div class="col-md-8 h-100">
                         <div class="row card-body text-center justify-content-center h-100 align-content-around">
+                        <div class="col-12 text-end">
+                            <a asp-controller="Articoli" asp-action="Modifica" asp-route-id="@articolo.Id"><i class="bi bi-pencil-square h4"></i></a>
+                        </div>
                             <div class="col-12 mb-3">
                                 <h3 class="card-title fw-bold">@articolo.Nome</h3>
                             </div>
+                           
                             <div class="col-1"></div>
                             <div class="col-9 my-3">
                                 <p>@articolo.Descrizione</p>

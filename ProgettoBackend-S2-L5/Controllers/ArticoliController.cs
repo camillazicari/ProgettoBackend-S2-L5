@@ -105,16 +105,61 @@ namespace ProgettoBackend_S2_L5.Controllers
 
             var infoArticolo = new InfoArticolo()
             {
-               Id = articoloEsistente.Id,
-               Nome = articoloEsistente.Nome,
-               Descrizione = articoloEsistente.Descrizione,
-               Prezzo = articoloEsistente.Prezzo,
-               Copertina = articoloEsistente.Copertina,
-               Immagine2 = articoloEsistente.Immagine2,
-               Immagine3 = articoloEsistente.Immagine3
+                Id = articoloEsistente.Id,
+                Nome = articoloEsistente.Nome,
+                Descrizione = articoloEsistente.Descrizione,
+                Prezzo = articoloEsistente.Prezzo,
+                Copertina = articoloEsistente.Copertina,
+                Immagine2 = articoloEsistente.Immagine2,
+                Immagine3 = articoloEsistente.Immagine3
             };
 
             return View(infoArticolo);
+        }
+
+        [HttpGet("/articoli/modifica/{id:guid}")]
+        public IActionResult Modifica(Guid id)
+        {
+            var articoloEsistente = articoli.FirstOrDefault(a => a.Id == id);
+            if (articoloEsistente == null)
+            {
+                TempData["Error"] = "Articolo non trovato!";
+                return RedirectToAction("Index");
+            }
+
+            var modificaArticolo = new ModificaArticoloModel()
+            {
+                Id = articoloEsistente.Id,
+                Nome = articoloEsistente.Nome,
+                Descrizione = articoloEsistente.Descrizione,
+                Prezzo = articoloEsistente.Prezzo,
+                Copertina = articoloEsistente.Copertina,
+                Immagine2 = articoloEsistente.Immagine2,
+                Immagine3 = articoloEsistente.Immagine3
+            };
+
+            return View(modificaArticolo);
+        }
+
+        [HttpPost("articolo/edit/{id:guid}")]
+        public IActionResult Edit(Guid id, ModificaArticoloModel modificaArticoloModel)
+        {
+            var articoloModificato = articoli.FirstOrDefault(a => a.Id == id);
+
+            if(articoloModificato == null)
+            {
+                TempData["Error"] = "Product not found";
+                return RedirectToAction("Index");
+            }
+
+            articoloModificato.Nome = modificaArticoloModel.Nome;
+            articoloModificato.Descrizione = modificaArticoloModel.Descrizione;
+            articoloModificato.Prezzo = modificaArticoloModel.Prezzo;
+            articoloModificato.Copertina = modificaArticoloModel.Copertina;
+            articoloModificato.Immagine2 = modificaArticoloModel.Immagine2;
+            articoloModificato.Immagine3 = modificaArticoloModel.Immagine3;
+
+            return RedirectToAction("Index");
         }
     }
 }

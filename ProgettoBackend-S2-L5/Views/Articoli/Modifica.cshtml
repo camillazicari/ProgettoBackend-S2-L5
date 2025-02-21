@@ -1,15 +1,15 @@
-﻿@model AddArticoloModel
+﻿@model ModificaArticoloModel
 @{
-	ViewData["Title"] = "Aggiungi Articolo";
+	ViewData["Title"] = "Modifica Articolo";
 }
 
 <div class="container">
     <div class="text-end">
         <a asp-controller="Articoli" asp-action="Index" class="text-decoration-none"><i class="bi bi-arrow-90deg-left"></i> Articoli</a>
     </div>
-	<h1 class="text-center text-danger mt-3">Aggiungi Articolo</h1>
-	<div>
-        <form method="post" asp-controller="Articoli" asp-action="Create">
+    <h1 class="text-center text-danger mt-3">Modifica Articolo</h1>
+    <div>
+        <form method="post" asp-controller="Articoli" asp-action="Edit" asp-route-id="@Model.Id">
             <div class="my-3">
                 <label for="nomeArticolo" asp-for="Nome" class="form-label"></label>
                 <input id="nomeArticolo" asp-for="Nome" class="form-control" />
@@ -50,5 +50,5 @@
                 <button class="btn btn-sm btn-success" type="submit">Save</button>
             </div>
         </form>
-	</div>
+    </div>
 </div>
