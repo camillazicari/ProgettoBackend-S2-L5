@@ -79,12 +79,19 @@ namespace ProgettoBackend_S2_L5.Controllers
                 return RedirectToAction("Add");
             }
 
+            var prezzoString = addArticoloModel.Prezzo.ToString(CultureInfo.InvariantCulture);
+            if (!decimal.TryParse(prezzoString, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal prezzo))
+            {
+                TempData["Error"] = "Formato prezzo non valido";
+                return RedirectToAction("Add");
+            }
+
             var nuovoArticolo = new Articolo()
             {
                 Id = Guid.NewGuid(),
                 Nome = addArticoloModel.Nome,
                 Descrizione = addArticoloModel.Descrizione,
-                Prezzo = addArticoloModel.Prezzo,
+                Prezzo = prezzo,
                 Copertina = addArticoloModel.Copertina,
                 Immagine2 = addArticoloModel.Immagine2,
                 Immagine3 = addArticoloModel.Immagine3,
@@ -92,6 +99,7 @@ namespace ProgettoBackend_S2_L5.Controllers
 
             articoli.Add(nuovoArticolo);
 
+            TempData["Success"] = "Articolo aggiunto con successo!";
             return RedirectToAction("Index");
         }
 
@@ -154,15 +162,14 @@ namespace ProgettoBackend_S2_L5.Controllers
                 return RedirectToAction("Index");
             }
 
-            string prezzoString = modificaArticoloModel.Prezzo.ToString().Replace(",", ".");
-
+            var prezzoString = modificaArticoloModel.Prezzo.ToString(CultureInfo.InvariantCulture);
             if (decimal.TryParse(prezzoString, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal prezzo))
             {
                 articoloModificato.Prezzo = prezzo;
             }
             else
             {
-                TempData["Error"] = "Invalid price format";
+                TempData["Error"] = "Formato prezzo non valido";
                 return RedirectToAction("Edit", new { id });
             }
 

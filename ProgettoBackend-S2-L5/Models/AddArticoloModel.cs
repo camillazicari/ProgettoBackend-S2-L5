@@ -15,8 +15,9 @@ namespace ProgettoBackend_S2_L5.Models
         public string? Descrizione { get; set; }
 
         [Display(Name = "Prezzo")]
-        [Required(ErrorMessage = "Il prezzo dell'articolo è obbligatorio!")]
-        [Range(1.00, 10000.00, ErrorMessage = "Il prezzo deve essere in un range compreso tra 1 e 10000 euro")]
+        [Required(ErrorMessage = "Il prezzo è obbligatorio")]
+        [Range(0.01, 9999.99, ErrorMessage = "Il prezzo deve essere tra 0.01 e 9999.99")]
+        [DisplayFormat(DataFormatString = "{0:0.00}", ApplyFormatInEditMode = true)]
         public decimal Prezzo { get; set; }
 
         [Display(Name = "Copertina")]
