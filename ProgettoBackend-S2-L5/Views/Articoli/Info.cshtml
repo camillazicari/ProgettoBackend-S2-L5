@@ -1,0 +1,56 @@
+﻿@model InfoArticolo
+@{
+	ViewData["Title"] = "Informazioni Prodotto";
+}
+
+<div class="text-end">
+	<a asp-controller="Articoli" asp-action="Index" class="text-decoration-none"><i class="bi bi-arrow-90deg-left"></i> Articoli</a>
+</div>
+
+<h1 class="text-center text-danger mt-3 mb-4">Informazioni @Model.Nome</h1>
+
+<div class="container d-flex justify-content-center mb-3">
+    <div class="row align-items-start">
+        <div class="col-5 text-center p-0">
+            <img src="@Model.Copertina" id="image" class="w-100 rounded-3 border">
+        </div>
+        <div class="col-7 h-100 mt-3 ps-5">
+            <div class="row" id="row">
+				<div class="col-12"><p class="h4" id="productName">@Model.Nome</p></div>
+                <div class="col-12"><p id="price" class="fw-bold text-black-50">€
+                    @Model.Prezzo</p>
+                </div>
+                <div class="col-12"><p id="description">@Model.Descrizione</p></div>
+            </div>
+            <div class="col-12 text-center mt-2">
+                <h5 class="text-decoration-underline mb-3">Altri colori disponibili:</h5>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <div id="carouselExampleIndicators" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active bg-black" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" class="bg-black" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="@Model.Immagine2" class="d-block w-100 rounded-3" alt="scarpa 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="@Model.Immagine3" class="d-block w-100 rounded-3" alt="scarpa 3">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
