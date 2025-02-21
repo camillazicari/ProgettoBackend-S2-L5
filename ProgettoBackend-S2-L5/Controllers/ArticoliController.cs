@@ -175,7 +175,10 @@ namespace ProgettoBackend_S2_L5.Controllers
 
             articoloModificato.Nome = modificaArticoloModel.Nome;
             articoloModificato.Descrizione = modificaArticoloModel.Descrizione;
-            articoloModificato.Copertina = modificaArticoloModel.Copertina;
+            if (!string.IsNullOrEmpty(modificaArticoloModel.Copertina))
+            {
+                articoloModificato.Copertina = modificaArticoloModel.Copertina;
+            }
             articoloModificato.Immagine2 = modificaArticoloModel.Immagine2;
             articoloModificato.Immagine3 = modificaArticoloModel.Immagine3;
 
