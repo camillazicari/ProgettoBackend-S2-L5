@@ -2,8 +2,12 @@
 @{
 	ViewData["Title"] = "Articoli";
 }
-<h1 class="text-center text-info my-3">Articoli</h1>
 <div class="container">
+    <h1 class="text-center text-info mt-3">Articoli</h1>
+    <div class="text-end mb-3">
+        <a class="btn btn-sm bg-success text-white" asp-controller="Articoli" asp-action="Add"><i class="bi bi-plus"></i> Nuovo prodotto</a>
+    </div>
+
         @foreach (var articolo in Model.Articoli)
         {
             <div class="card mb-3" style="height: 400px">

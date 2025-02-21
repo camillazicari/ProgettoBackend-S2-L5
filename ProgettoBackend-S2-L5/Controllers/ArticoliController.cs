@@ -63,6 +63,11 @@ namespace ProgettoBackend_S2_L5.Controllers
             return View(listaArt);
         }
 
+        public IActionResult Add()
+        {
+            return View();
+        }
+
         [HttpGet("/articoli/info/{id:guid}")]
         public IActionResult Info(Guid id)
         {
