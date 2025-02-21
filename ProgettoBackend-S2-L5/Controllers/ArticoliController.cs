@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.Metrics;
 using System.Drawing;
+using System.Globalization;
+using System.Reflection;
 using System.Runtime.ConstrainedExecution;
 using Microsoft.AspNetCore.Mvc;
 using ProgettoBackend_S2_L5.Models;
@@ -146,20 +148,47 @@ namespace ProgettoBackend_S2_L5.Controllers
         {
             var articoloModificato = articoli.FirstOrDefault(a => a.Id == id);
 
-            if(articoloModificato == null)
+            if (articoloModificato == null)
             {
                 TempData["Error"] = "Product not found";
                 return RedirectToAction("Index");
             }
 
+            string prezzoString = modificaArticoloModel.Prezzo.ToString().Replace(",", ".");
+
+            if (decimal.TryParse(prezzoString, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal prezzo))
+            {
+                articoloModificato.Prezzo = prezzo;
+            }
+            else
+            {
+                TempData["Error"] = "Invalid price format";
+                return RedirectToAction("Edit", new { id });
+            }
+
             articoloModificato.Nome = modificaArticoloModel.Nome;
             articoloModificato.Descrizione = modificaArticoloModel.Descrizione;
-            articoloModificato.Prezzo = modificaArticoloModel.Prezzo;
             articoloModificato.Copertina = modificaArticoloModel.Copertina;
             articoloModificato.Immagine2 = modificaArticoloModel.Immagine2;
             articoloModificato.Immagine3 = modificaArticoloModel.Immagine3;
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost("articoli/elimina/{id:guid}")]
+        public IActionResult Elimina(Guid id)
+        {
+            var articolo = articoli.FirstOrDefault(a => a.Id == id);
+            if (articolo == null)
+            {
+                TempData["Error"] = "Product not found";
+                return RedirectToAction("Index");
+            }
+
+            articoli.Remove(articolo);  
+            TempData["Success"] = "Prodotto eliminato con success!";
+
+            return RedirectToAction("Index");  
         }
     }
 }

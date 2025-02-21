@@ -16,10 +16,10 @@ namespace ProgettoBackend_S2_L5.Models
     [StringLength(1000, ErrorMessage = "La descrizione deve essere compresa tra 10 e 1000 caratteri", MinimumLength = 10)]
     public string? Descrizione { get; set; }
 
-    [Display(Name = "Prezzo")]
-    [Required(ErrorMessage = "Il prezzo dell'articolo è obbligatorio!")]
-    [Range(1, 10000, ErrorMessage = "Il prezzo deve essere in un range compreso tra 1 e 10000 euro")]
-    public decimal Prezzo { get; set; }
+        [Display(Name = "Prezzo")]
+        [Required(ErrorMessage = "Il prezzo è obbligatorio")]
+        [Range(0.01, 9999.99, ErrorMessage = "Il prezzo deve essere tra 0.01 e 9999.99")]
+        public decimal Prezzo { get; set; }
 
     [Display(Name = "Copertina")]
     [Required(ErrorMessage = "L'URL per l'immagine di copertina è obbligatorio!")]

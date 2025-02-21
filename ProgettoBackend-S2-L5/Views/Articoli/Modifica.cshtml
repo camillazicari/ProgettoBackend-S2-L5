@@ -24,14 +24,8 @@
 
             <div class="my-3">
                 <label for="prezzo" asp-for="Prezzo" class="form-label">Prezzo</label>
-                <input id="prezzo" asp-for="Prezzo" class="form-control" />
+                <input id="prezzo" type="text" asp-for="Prezzo" class="form-control" />
                 <span class="text-danger" asp-validation-for="Prezzo"></span>
-            </div>
-
-            <div class="my-3">
-                <label for="copertina" asp-for="Copertina" class="form-label">Copertina</label>
-                <input id="copertina" asp-for="Copertina" class="form-control" />
-                <span class="text-danger" asp-validation-for="Copertina"></span>
             </div>
 
             <div class="my-3">
@@ -46,9 +40,12 @@
                 <span class="text-danger" asp-validation-for="Immagine3"></span>
             </div>
             <div class="text-end my-3">
-                <button class="btn btn-sm btn-warning me-2" type="reset">Reset</button>
-                <button class="btn btn-sm btn-success" type="submit">Save</button>
+                <button class="btn btn-sm btn-success" type="submit">Salva</button>
             </div>
         </form>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
