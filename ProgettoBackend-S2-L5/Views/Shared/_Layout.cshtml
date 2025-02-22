@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="~/ProgettoBackend_S2_L5.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm py-0 navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header class="position-sticky sticky-top top-0">
+        <nav class="navbar navbar-expand-sm py-0 navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
             <div class="container-fluid">
                 <a class="navbar-brand" class="w-50" asp-area="" asp-controller="Home" asp-action="Index"><img src="https://www.scarpe.pt/wp-content/uploads/2024/04/SCARPE-LOGO.png" class="logo" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -43,9 +43,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted py-3 text-center">
         <div class="container">
-            &copy; 2025 - ProgettoBackend_S2_L5 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2025 - Scarpe&Co. - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
