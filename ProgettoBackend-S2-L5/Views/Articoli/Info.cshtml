@@ -9,11 +9,11 @@
 <h1 class="text-center text-danger mt-3 mb-4">Informazioni @Model.Nome</h1>
 
 <div class="container d-flex justify-content-center mb-3">
-    <div class="row align-items-start">
+    <div class="row align-items-start" style="max-height:650px">
         <div class="col-5 text-center p-0">
             <img src="@Model.Copertina" id="image" class="w-100 rounded-3 border">
         </div>
-        <div class="col-7 h-100 mt-3 ps-5">
+        <div class="col-7 h-100 mt-3 ps-5 overflow-auto">
             <div class="row" id="row">
 				<div class="col-12"><p class="h4" id="productName">@Model.Nome</p></div>
                 <div class="col-12"><p id="price" class="fw-bold text-black-50">€
